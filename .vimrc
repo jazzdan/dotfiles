@@ -33,6 +33,7 @@ Plugin 'fatih/vim-go'
 Plugin 'reedes/vim-pencil'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+Plugin 'benekastah/neomake'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

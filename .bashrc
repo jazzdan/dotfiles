@@ -10,6 +10,7 @@ alias vidiff='git-root && vi $(git status --porcelain | awk '"'"'{print $2}'"'"'
 alias g='git'
 alias ta='tmux -u attach'
 alias td='tmux -u attach -d'
+alias vim='nvim'
 
 ggb() {
     git grep -n $1 | while IFS=: read i j k; do git blame -L $j,$j $i | cat; done
