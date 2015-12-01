@@ -33,6 +33,8 @@ Plugin 'urthbound/hound.vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'fatih/vim-go'
 Plugin 'reedes/vim-pencil'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -74,6 +76,9 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " reindent whole file
 nnoremap <leader>r ggVG=
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+
+" escape from terminal mode
+tnoremap <Esc> <C-\><C-n>
 
 " set PHP coding standard and call on writing php files
 "let Vimphpcs_Standard='~/development/Web/tests/standards/staging-ruleset.xml'
