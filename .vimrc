@@ -14,7 +14,6 @@ Plugin 'gmarik/vundle'
 " original repos on github
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
 "Plugin 'vim-phpcs'
@@ -28,7 +27,6 @@ Plugin 'buddhavs/vim-Rename'
 Plugin 'joonty/vdebug.git'
 Plugin 'https://github.etsycorp.com/tschneiter/vim-github.git'
 Plugin 'https://github.com/hhvm/vim-hack.git'
-Plugin 'JazzCore/ctrlp-cmatcher'
 Plugin 'urthbound/hound.vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'fatih/vim-go'
@@ -126,6 +124,7 @@ function! g:ToggleNuMode()
     endif
 endfunc
 nnoremap <C-L> :call g:ToggleNuMode()<cr>
+nnoremap <C-P> :FZF<CR>
 
 " OR ELSE just the 81st column of wide lines...
 highlight ColorColumn ctermbg=magenta
@@ -160,18 +159,6 @@ map <leader>G :Github<CR>
 map <leader>g :Github l<CR>
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.class     " MacOSX/Linux
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_max_files = 50000
-"let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-      "\ --ignore .git
-      "\ --ignore .DS_Store
-      "\ --ignore "**/*.pyc"
-      "\ --ignore "*/tmp/*"
-      "\ --ignore .so
-      "\ --ignore .swp
-      "\ -g ""'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard']
-let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 
 " Create new directories when adding a file where the parent directory doesn't
 " exist

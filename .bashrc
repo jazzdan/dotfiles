@@ -45,3 +45,8 @@ export NVM_DIR="/home/dmiller/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export FZF_DEFAULT_COMMAND='
+  (git ls-tree -r --name-only HEAD ||
+         find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
+        sed s/^..//) 2> /dev/null'
