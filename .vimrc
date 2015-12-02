@@ -80,9 +80,7 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 tnoremap <Esc> <C-\><C-n>
 
 " set PHP coding standard and call on writing php files
-"let Vimphpcs_Standard='~/development/Web/tests/standards/staging-ruleset.xml'
-"autocmd BufWritePost *.php silent! :CodeSniff
-au BufReadPost * if getfsize(bufname("%")) > 102400 | set syntax= | endif
+"au BufReadPost * if getfsize(bufname("%")) > 102400 | set syntax= | endif
 let g:syntastic_phpcs_conf = "--standard=/home/".expand($USER)."/development/Etsyweb/tests/standards/stable-ruleset.xml"
 
 " Searching
@@ -95,17 +93,17 @@ set smartcase
 set laststatus=2
 
 " Enable syntastic syntax checking
-"let g:syntastic_enable_signs=0
-"let g:syntastic_quiet_messages = {'level': 'warnings'}
+let g:syntastic_enable_signs=0
+let g:syntastic_quiet_messages = {'level': 'warnings'}
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
 "let g:syntastic_auto_loc_list=1
 "let g:syntastic_loc_list_height=5
-"let g:syntastic_quiet_messages = { "type": "style" }
-"let g:syntastic_mode_map = {
-        "\ "mode": "active",
-        "\ "passive_filetypes": ["hh"] }
+let g:syntastic_quiet_messages = { "type": "style" }
+let g:syntastic_mode_map = {
+        \ "mode": "active",
+        \ "passive_filetypes": ["hh"] }
 
 " SuperTab Settings
 let g:SuperTabDefaultCompletionTypeDiscovery = [

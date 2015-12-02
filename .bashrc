@@ -24,7 +24,7 @@ PS1="[\w]> "
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-export EDITOR='vim'
+export EDITOR='nvim'
 
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/development/go
