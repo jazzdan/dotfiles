@@ -4,3 +4,4 @@
 [alias]
     amend = !git commit --amend -m "$(git --no-pager log -1 --pretty=%s)"
     cm = commit -m
+    rpull = pull --rebase --stat
