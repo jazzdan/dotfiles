@@ -37,6 +37,8 @@ export GEM_HOME="/usr/lib64/ruby/gems/1.9.1/gems"
 
 export XDEBUG_CONFIG="idekey=key_doesnt_matter"
 
+export GO15VENDOREXPERIMENT=1
+
 . /home/dmiller/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true # ocaml stuff
 
 set -o vi

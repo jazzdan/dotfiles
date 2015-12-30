@@ -1,3 +1,6 @@
 [core]
 	editor = vim
-	excludesfile = /home/dmiller/.gitignore
+    excludesfile = /home/dmiller/.gitignore
+[alias]
+    amend = !git commit --amend -m "$(git --no-pager log -1 --pretty=%s)"
+    cm = commit -m
