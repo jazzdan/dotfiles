@@ -11,6 +11,17 @@ alias g='git'
 alias ta='tmux -u attach'
 alias td='tmux -u attach -d'
 alias vim='nvim'
+alias etsygo='cd ~/development/go/src/github.etsycorp.com/Engineering/EtsyGo'
+alias franz='cd ~/development/go/src/github.etsycorp.com/Engineering/franz'
+alias j='jira'
+alias jme='jira ls -p CORE -a dmiller'
+alias jsprint='jira ls -q "assignee was dmiller AND updatedDate > -2w" -t table'
+
+function jgrab { jira edit "$1" --noedit -o assignee=dmiller -o comment="I'll take care of this"; }
+function jcomment { jira comment "$1" -m "$2"; }
+function jprogress { jira trans progress "$1" --noedit; }
+function jclose { jira close "$1" -o resolution="resolved" --noedit; }
+function jshow { jira view "$1"; }
 
 ggb() {
     git grep -n $1 | while IFS=: read i j k; do git blame -L $j,$j $i | cat; done

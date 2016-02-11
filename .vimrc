@@ -226,6 +226,8 @@ let g:vdebug_options= {
 
 let g:go_fmt_autosave = 1
 let g:go_fmt_command = "goimports"
+let g:syntastic_go_checkers = ["go", "gofmt", "golint", "govet"]
+let g:syntastic_aggregate_errors = 1
 
 au! BufRead,BufNewFile *.markdown set filetype=mkd
 au! BufRead,BufNewFile *.md       set filetype=mkd

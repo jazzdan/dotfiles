@@ -1,7 +1,10 @@
 [core]
-	editor = vim
+	editor = nvim
     excludesfile = /home/dmiller/.gitignore
 [alias]
-    amend = !git commit --amend -m "$(git --no-pager log -1 --pretty=%s)"
+    amend = commit --amend
     cm = commit -m
     rpull = pull --rebase --stat
+    me = log --author="dmiller"
+    abba = "!echo \"#disco 💃 abba 💃 from kgessner: $(git show | gist -t diff) -- $(git log -1 --pretty='format:%s')\" | nc irccat.etsycorp.com 12345"
+
