@@ -14,8 +14,8 @@ alias vim='nvim'
 alias etsygo='cd ~/development/go/src/github.etsycorp.com/Engineering/EtsyGo'
 alias franz='cd ~/development/go/src/github.etsycorp.com/Engineering/franz'
 alias j='jira'
-alias jme='jira ls -p CORE -a dmiller'
-alias jsprint='jira ls -q "assignee was dmiller AND updatedDate > -2w" -t table'
+alias jme='jira ls -p DISCO -a dmiller'
+alias jsprint='jira ls -q "assignee was dmiller AND updatedDate > -1w" -t table'
 
 function jgrab { jira edit "$1" --noedit -o assignee=dmiller -o comment="I'll take care of this"; }
 function jcomment { jira comment "$1" -m "$2"; }
