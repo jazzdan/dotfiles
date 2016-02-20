@@ -107,6 +107,22 @@ let g:syntastic_mode_map = {
         \ "mode": "active",
         \ "passive_filetypes": ["hh"] }
 
+if getcwd() =~ '/Etsyweb\(/\|$\)'
+    let g:syntastic_javascript_checkers = ["eslint"]
+    let g:syntastic_javascript_eslint_exec = "/usr/lib/node_modules/etsy-eslint/node_modules/.bin/eslint"
+    let g:syntastic_javascript_eslint_args='--config /usr/lib/node_modules/etsy-eslint/config.json'
+endif
+
+if getcwd() =~ '/mott\(/\|$\)'
+    set shiftwidth=2
+    set softtabstop=2
+    set tabstop=2
+
+    let g:syntastic_javascript_checkers = ["eslint"]
+    let g:syntastic_javascript_eslint_exec = "/home/dmiller/development/mott/node_modules/eslint/bin/eslint.js"
+endif
+
+
 " SuperTab Settings
 let g:SuperTabDefaultCompletionTypeDiscovery = [
             \ "&completefunc:<c-x><c-u>",
