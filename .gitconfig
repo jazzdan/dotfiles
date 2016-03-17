@@ -6,5 +6,5 @@
     cm = commit -m
     rpull = pull --rebase --stat
     me = log --author="dmiller"
-    abba = "!echo \"#disco 💃 abba 💃 from kgessner: $(git show | gist -t diff) -- $(git log -1 --pretty='format:%s')\" | nc irccat.etsycorp.com 12345"
+    abba = "!echo \"#disco 💃 abba 💃 frodmiller: $(git show | gist -t diff) -- $(git log -1 --pretty='format:%s')\" | nc irccat.etsycorp.com 12345"
 

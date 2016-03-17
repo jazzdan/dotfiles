@@ -36,6 +36,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'benekastah/neomake'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'flowtype/vim-flow'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -255,3 +256,6 @@ augroup pencil
     autocmd FileType markdown,mkd call pencil#init({'wrap': 'soft'})
     autocmd FileType text         call pencil#init()
 augroup END
+
+" flow 
+let g:flow#autoclose = 1
