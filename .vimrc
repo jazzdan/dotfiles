@@ -37,6 +37,7 @@ Plugin 'benekastah/neomake'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'flowtype/vim-flow'
+Plugin 'elmcast/elm-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -259,3 +260,6 @@ augroup END
 
 " flow 
 let g:flow#autoclose = 1
+
+" elm
+let g:elm_format_autosave = 1
