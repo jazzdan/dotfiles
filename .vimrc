@@ -26,7 +26,7 @@ Plugin 'joonty/vim-phpunitqf'
 Plugin 'buddhavs/vim-Rename'
 Plugin 'joonty/vdebug.git'
 Plugin 'https://github.etsycorp.com/tschneiter/vim-github.git'
-Plugin 'https://github.com/hhvm/vim-hack.git'
+Plugin 'https://github.etsycorp.com/Engineering/vim-rodeo.git'
 Plugin 'urthbound/hound.vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'fatih/vim-go'
@@ -38,6 +38,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'flowtype/vim-flow'
 Plugin 'elmcast/elm-vim'
+Plugin 'phpfmt/vim-phpfmt'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -205,7 +206,8 @@ set makeprg=cd\ /home/dmiller/development/Etsyweb/tests/phpunit;\ pake\ $*
 " " In addition to other PHP interpreter errors (also one line)
 set errorformat=%E%n)\ %.%#,%Z%f:%l,%C%m,%m\ in\ %f\ on\ line\ %l,%-G%.%#
 
-map muu :make unit_nosetup %:p:h<CR>
+"map muu :make unit_nosetup %:p:h<CR>
+map muu :make unit_nosetup <C-R>#
 map mmu :make unit_nosetup
 map mmU :make unit
 map mmi :make integration_nosetup
@@ -263,3 +265,8 @@ let g:flow#autoclose = 1
 
 " elm
 let g:elm_format_autosave = 1
+
+" phpfmt
+let g:phpfmt_indent_with_space = 4
+let g:phpfmt_enable_auto_align = 0
+let g:phpfmt_on_save = get(g:, 'phpfmt_on_save', 1)
