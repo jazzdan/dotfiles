@@ -98,17 +98,16 @@ set smartcase
 set laststatus=2
 
 " Enable syntastic syntax checking
-let g:syntastic_enable_signs=0
-let g:syntastic_quiet_messages = {'level': 'warnings'}
+let g:syntastic_enable_signs=1
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
-"let g:syntastic_auto_loc_list=1
-"let g:syntastic_loc_list_height=5
+let g:syntastic_auto_loc_list=1
+let g:syntastic_loc_list_height=5
+let g:syntastic_always_populate_loc_list=1 " not sure if I want this
+let g:syntastic_aggregate_errors=1
+let g:syntastic_sort_aggregated_errors=1
 let g:syntastic_quiet_messages = { "type": "style" }
-let g:syntastic_mode_map = {
-        \ "mode": "active",
-        \ "passive_filetypes": ["hh"] }
 
 if getcwd() =~ '/Etsyweb\(/\|$\)'
     let g:syntastic_javascript_checkers = ["eslint"]
@@ -269,4 +268,21 @@ let g:elm_format_autosave = 1
 " phpfmt
 let g:phpfmt_indent_with_space = 4
 let g:phpfmt_enable_auto_align = 0
-let g:phpfmt_on_save = get(g:, 'phpfmt_on_save', 1)
+let g:phpfmt_on_save = get(g:, 'phpfmt_on_save', 0)
+let g:phpfmt_enable_default_mapping = 1
+
+" reason
+if !empty(system('which opam'))
+  " Merlin plugin
+  let s:ocamlmerlin=substitute(system('opam config var share'),'\n$','','') . "/merlin"
+  execute "set rtp+=".s:ocamlmerlin."/vim"
+  execute "set rtp+=".s:ocamlmerlin."/vimbufsync"
+  let g:syntastic_ocaml_checkers=['merlin']
+
+  " Reason plugin which uses Merlin
+  let s:reasondir=substitute(system('opam config var share'),'\n$','','') . "/reason"
+  execute "set rtp+=".s:reasondir."/editorSupport/VimReason"
+  let g:syntastic_reason_checkers=['merlin']
+else
+
+endif
