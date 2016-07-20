@@ -8,4 +8,5 @@
     rpull = pull --rebase --stat
     me = log --author="dmiller"
     abba = "!echo \"#disco 💃 abba 💃 fm dmiller: $(git show | gist -t diff) -- $(git log -1 --pretty='format:%s')\" | nc irccat.etsycorp.com 12345"
-
+[grep]                                                                                                                           
+    linenumber = true        
