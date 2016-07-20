@@ -39,6 +39,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'flowtype/vim-flow'
 Plugin 'elmcast/elm-vim'
 Plugin 'phpfmt/vim-phpfmt'
+Plugin 'bogado/file-line'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
