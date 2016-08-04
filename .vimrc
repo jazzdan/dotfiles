@@ -79,6 +79,7 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 tnoremap <Esc> <C-\><C-n>
 
 " neomake
+let g:neomake_open_list = 2
 let g:neomake_php_phpcs_args_standard = "/home/".expand($USER)."/development/Etsyweb/tests/standards/stable-ruleset.xml"
 let g:neomake_php_enabled_makers = ["php", "phpcs"]
 autocmd! BufWritePost * Neomake
