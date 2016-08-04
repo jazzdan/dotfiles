@@ -1,53 +1,46 @@
 set nocompatible
 syntax on
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
 
-call vundle#begin()
-
-" let Vundle manage Vundle
-" required! 
-Plugin 'gmarik/vundle'
-
+call plug#begin('~/.vim/plugged')
 "My Plugins here:
 "
 " original repos on github
-Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/syntastic'
-"Plugin 'vim-phpcs'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'ervandew/supertab'
-Plugin 'tpope/vim-surround'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'joonty/vim-phpunitqf' 
-Plugin 'buddhavs/vim-Rename'
-Plugin 'joonty/vdebug.git'
-Plugin 'https://github.etsycorp.com/tschneiter/vim-github.git'
-Plugin 'https://github.etsycorp.com/Engineering/vim-rodeo.git'
-Plugin 'urthbound/hound.vim'
-Plugin 'mattn/webapi-vim'
-Plugin 'fatih/vim-go'
-Plugin 'reedes/vim-pencil'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-Plugin 'benekastah/neomake'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'flowtype/vim-flow'
-Plugin 'elmcast/elm-vim'
-Plugin 'phpfmt/vim-phpfmt'
-Plugin 'bogado/file-line'
+Plug 'tpope/vim-fugitive'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/syntastic'
+Plug 'altercation/vim-colors-solarized'
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-surround'
+Plug 'derekwyatt/vim-scala'
+Plug 'plasticboy/vim-markdown'
+Plug 'joonty/vim-phpunitqf' 
+Plug 'buddhavs/vim-Rename' 
+Plug 'joonty/vdebug.git'
+Plug 'https://github.etsycorp.com/tschneiter/vim-github.git'
+Plug 'https://github.etsycorp.com/Engineering/vim-rodeo.git'
+Plug 'urthbound/hound.vim'
+Plug 'mattn/webapi-vim'
+Plug 'fatih/vim-go'
+Plug 'reedes/vim-pencil'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'benekastah/neomake'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'flowtype/vim-flow'
+Plug 'elmcast/elm-vim'
+Plug 'phpfmt/vim-phpfmt'
+Plug 'bogado/file-line'
+call plug#end()
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
 filetype plugin indent on
 
 syntax enable
 set background=dark
-"set background=light
+" set background=light
 let g:solarized_termtrans = 1
 colorscheme solarized
 
@@ -85,9 +78,10 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " escape from terminal mode
 tnoremap <Esc> <C-\><C-n>
 
-" set PHP coding standard and call on writing php files
-"au BufReadPost * if getfsize(bufname("%")) > 102400 | set syntax= | endif
-let g:syntastic_phpcs_conf = "--standard=/home/".expand($USER)."/development/Etsyweb/tests/standards/stable-ruleset.xml"
+" neomake
+let g:neomake_php_phpcs_args_standard = "/home/".expand($USER)."/development/Etsyweb/tests/standards/stable-ruleset.xml"
+let g:neomake_php_enabled_makers = ["php", "phpcs"]
+autocmd! BufWritePost * Neomake
 
 " Searching
 set hlsearch
@@ -248,7 +242,7 @@ let g:vdebug_options= {
 
 let g:go_fmt_autosave = 1
 let g:go_fmt_command = "goimports"
-let g:syntastic_go_checkers = ["go", "gofmt", "golint", "govet"]
+let g:syntastic_go_checkers = ["go", "gofmt"]
 let g:syntastic_aggregate_errors = 1
 
 au! BufRead,BufNewFile *.markdown set filetype=mkd
@@ -287,3 +281,6 @@ if !empty(system('which opam'))
 else
 
 endif
+
+" NERDcomment
+let g:NERDSpaceDelims = 1

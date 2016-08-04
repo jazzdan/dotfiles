@@ -1,3 +1,5 @@
+#!/bin/bash
+
 alias ll='ls -al'
 alias l='ls -l'
 alias ..='cd ..'
@@ -22,10 +24,6 @@ function jcomment { jira comment "$1" -m "$2"; }
 function jprogress { jira trans progress "$1" --noedit; }
 function jclose { jira close "$1" -o resolution="resolved" --noedit; }
 function jshow { jira view "$1"; }
-
-ggb() {
-    git grep -n $1 | while IFS=: read i j k; do git blame -L $j,$j $i | cat; done
-}
 
 omni () {
     git rpull && knife spork omni "$@" && git commit --amend && git rpull && git push && knife spork promote "$@" --remote
