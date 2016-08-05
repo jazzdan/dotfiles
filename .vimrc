@@ -252,12 +252,6 @@ let g:flow#autoclose = 1
 " elm
 let g:elm_format_autosave = 1
 
-" phpfmt
-let g:phpfmt_indent_with_space = 4
-let g:phpfmt_enable_auto_align = 0
-let g:phpfmt_on_save = get(g:, 'phpfmt_on_save', 0)
-let g:phpfmt_enable_default_mapping = 1
-
 " reason
 if !empty(system('which opam'))
   " Merlin plugin
