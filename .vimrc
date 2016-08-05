@@ -131,14 +131,6 @@ let g:SuperTabLongestHighlight = 1
 " Show (partial) command in the status line
 set showcmd
 
-function! g:ToggleNuMode()
-    if(&rnu == 1)
-        set nu
-    else
-        set rnu
-    endif
-endfunc
-nnoremap <C-L> :call g:ToggleNuMode()<cr>
 nnoremap <C-P> :FZF<CR>
 
 " OR ELSE just the 81st column of wide lines...
