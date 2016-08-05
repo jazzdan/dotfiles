@@ -31,7 +31,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'flowtype/vim-flow'
 Plug 'elmcast/elm-vim'
-Plug 'phpfmt/vim-phpfmt'
 Plug 'bogado/file-line'
 call plug#end()
 
