@@ -9,10 +9,8 @@ end
 
 `source ~/.bashrc`
 
-# install Vundle, if not already installed
-if !File.directory?('~/.vim/bundle/Vundle.vim')
-    `git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
-end
+# install vim-plugged, if not already installed
+`curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
 
-# Do the vundle install
-`vim +PluginInstall +qall`
+# Do the install
+vim +PlugInstall
