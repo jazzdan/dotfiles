@@ -45,10 +45,14 @@ colorscheme solarized
 
 let mapleader = ","
 
-set shiftwidth=4
-set softtabstop=4
+filetype plugin indent on
+" show existing tab with 4 spaces width
 set tabstop=4
+" " when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" " On pressing tab, insert 4 spaces
 set expandtab
+
 set number
 
 set history=1000                   " keeps a thousand lines of history
@@ -267,3 +271,9 @@ let g:syntastic_ignore_files = ['\m\c\.ml[ly]$']
 
 " NERDcomment
 let g:NERDSpaceDelims = 1
+
+" Elm
+let g:elm_syntastic_show_warnings = 0
+
+" SuperTab
+let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
