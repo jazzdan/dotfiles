@@ -17,7 +17,7 @@ Plug 'derekwyatt/vim-scala'
 Plug 'plasticboy/vim-markdown'
 Plug 'joonty/vim-phpunitqf' 
 Plug 'buddhavs/vim-Rename' 
-Plug 'joonty/vdebug.git'
+Plug 'joonty/vdebug'
 Plug 'https://github.etsycorp.com/tschneiter/vim-github.git'
 Plug 'https://github.etsycorp.com/Engineering/vim-rodeo.git'
 Plug 'urthbound/hound.vim'
@@ -32,6 +32,14 @@ Plug 'mxw/vim-jsx'
 Plug 'flowtype/vim-flow'
 Plug 'elmcast/elm-vim'
 Plug 'bogado/file-line'
+Plug 'rust-lang/rust.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'honza/vim-snippets'
+Plug 'hhvm/vim-hack'
+
 call plug#end()
 
 " All of your Plugins must be added before the following line
@@ -220,12 +228,12 @@ let g:hound_base_url="hound.etsycorp.com"
 let g:fugitive_github_domains = ['github.etsycorp.com']
 
 let g:vdebug_options= {
-    \    "port" : 9998,
-    \    "server" : '',
+    \    "port" : 9089,
+    \    "server" : 'localhost',
     \    "timeout" : 20,
     \    "on_close" : 'detach',
     \    "break_on_open" : 0,
-    \    "ide_key" : '',
+    \    "ide_key" : 'dmiller',
     \    "path_maps" : {},
     \    "debug_window_level" : 0,
     \    "debug_file_level" : 0,
@@ -258,16 +266,16 @@ let g:elm_format_autosave = 1
 
 " reason
 " Merlin plugin
-let s:ocamlmerlin=substitute(system('opam config var share'),'\n$','','') . "/merlin"
-execute "set rtp+=".s:ocamlmerlin."/vim"
-execute "set rtp+=".s:ocamlmerlin."/vimbufsync"
-let g:syntastic_ocaml_checkers=['merlin']
+" let s:ocamlmerlin=substitute(system('opam config var share'),'\n$','','') . "/merlin"
+" execute "set rtp+=".s:ocamlmerlin."/vim"
+" execute "set rtp+=".s:ocamlmerlin."/vimbufsync"
+" let g:syntastic_ocaml_checkers=['merlin']
 
-" Reason plugin which uses Merlin
-let s:reasondir=substitute(system('opam config var share'),'\n$','','') . "/reason"
-execute "set rtp+=".s:reasondir."/editorSupport/VimReason"
-let g:syntastic_reason_checkers=['merlin']
-let g:syntastic_ignore_files = ['\m\c\.ml[ly]$']
+" " Reason plugin which uses Merlin
+" let s:reasondir=substitute(system('opam config var share'),'\n$','','') . "/reason"
+" execute "set rtp+=".s:reasondir."/editorSupport/VimReason"
+" let g:syntastic_reason_checkers=['merlin']
+" let g:syntastic_ignore_files = ['\m\c\.ml[ly]$']
 
 " NERDcomment
 let g:NERDSpaceDelims = 1
@@ -277,3 +285,32 @@ let g:elm_syntastic_show_warnings = 0
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+
+" rust
+" let g:rustfmt_autosave = 1 " hmm why doesn't this work
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" neosnippet configuration
+let g:neosnippet#snippets_directory="/home/".expand($USER)."/.vim/plugged/vim-snippets/snippets"
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
