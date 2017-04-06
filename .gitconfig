@@ -3,13 +3,26 @@
     excludesfile = /home/dmiller/.gitignore
 	autocrlf = false
 [alias]
-    amend = commit --amend
+    amend = commit -v --amend
     cm = commit -m
     rpull = pull --rebase --stat
     me = log --author="dmiller"
     abba = "!echo \"#disco 💃 abba 💃 fm dmiller: $(git show | gist -t diff) -- $(git log -1 --pretty='format:%s')\" | nc irccat.etsycorp.com 12345"
+    d = difftool
 [grep]                                                                                                                           
     linenumber = true        
 [user]
-	name = Dan Miller
-	email = dan@dmiller.io
+	  name = Dan Miller
+    email = dmiller@etsy.com
+[commit]
+    template = ~/.gitmessage
+[push]
+    default = simple
+[status]
+    showUntrackedFiles = all
+[diff]
+    tool = icdiff
+[difftool]
+    prompt = false
+[difftool "icdiff"]
+    cmd = /usr/bin/icdiff --no-bold --line-numbers $LOCAL $REMOTE

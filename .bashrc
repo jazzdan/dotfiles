@@ -66,3 +66,7 @@ export FZF_DEFAULT_COMMAND='
         sed s/^..//) 2> /dev/null'
 
 PATH="$PATH:/home/dmiller/flow/"
+PATH="/home/dmiller/.local/bin:$PATH"
+
+# added by travis gem
+[ -f /home/dmiller/.travis/travis.sh ] && source /home/dmiller/.travis/travis.sh

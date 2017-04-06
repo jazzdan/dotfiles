@@ -9,13 +9,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/syntastic'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
 Plug 'derekwyatt/vim-scala'
 Plug 'plasticboy/vim-markdown'
-Plug 'joonty/vim-phpunitqf' 
 Plug 'buddhavs/vim-Rename' 
 Plug 'joonty/vdebug'
 Plug 'https://github.etsycorp.com/tschneiter/vim-github.git'
@@ -24,7 +22,7 @@ Plug 'urthbound/hound.vim'
 Plug 'mattn/webapi-vim'
 Plug 'fatih/vim-go'
 Plug 'reedes/vim-pencil'
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'benekastah/neomake'
 Plug 'pangloss/vim-javascript'
@@ -39,6 +37,7 @@ Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
 Plug 'hhvm/vim-hack'
+Plug 'scrooloose/syntastic'
 
 call plug#end()
 
@@ -93,6 +92,7 @@ tnoremap <Esc> <C-\><C-n>
 let g:neomake_open_list = 2
 let g:neomake_php_phpcs_args_standard = "/home/".expand($USER)."/development/Etsyweb/tests/standards/stable-ruleset.xml"
 let g:neomake_php_enabled_makers = ["php", "phpcs"]
+let g:neomake_javascript_enabled_makers = []
 autocmd! BufWritePost * Neomake
 
 " Searching
@@ -106,12 +106,12 @@ set laststatus=2
 
 " Enable syntastic syntax checking
 let g:syntastic_enable_signs=1
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
 let g:syntastic_auto_loc_list=1
 let g:syntastic_loc_list_height=5
-let g:syntastic_always_populate_loc_list=1 " not sure if I want this
+let g:syntastic_always_populate_loc_list=1
 let g:syntastic_aggregate_errors=1
 let g:syntastic_sort_aggregated_errors=1
 let g:syntastic_quiet_messages = { "type": "style" }
@@ -122,15 +122,30 @@ if getcwd() =~ '/Etsyweb\(/\|$\)'
     let g:syntastic_javascript_eslint_args='--config /usr/lib/node_modules/etsy-eslint/config.json'
 endif
 
-if getcwd() =~ '/mott\(/\|$\)'
+if getcwd() =~ '/mott-ui\(/\|$\)'
     set shiftwidth=2
     set softtabstop=2
     set tabstop=2
 
     let g:syntastic_javascript_checkers = ["eslint"]
     let g:syntastic_javascript_eslint_exec = "/home/dmiller/development/mott/node_modules/eslint/bin/eslint.js"
+    autocmd FileType javascript set formatprg=prettier\ --single-quote\ --trailing-comma\ es5\ --stdin
+    " autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
 endif
 
+if getcwd() =~ '/code-review\(/\|$\)'
+    set shiftwidth=2
+    set softtabstop=2
+    set tabstop=2
+
+    let g:syntastic_javascript_checkers = ["eslint"]
+endif
+
+if getcwd() =~ '/deployinator\(/\|$\)'
+    set shiftwidth=2
+    set softtabstop=2
+    set tabstop=2
+endif
 
 " SuperTab Settings
 let g:SuperTabDefaultCompletionTypeDiscovery = [
@@ -194,7 +209,8 @@ augroup BWCCreateDir
 augroup END
 
 " Set character wrap level to 80 on markdown files
-au BufRead,BufNewFile *.md setlocal textwidth=80
+au BufRead,BufNewFile *.md setlocal textwidth=120
+let g:vim_markdown_toc_autofit = 1
 
 " Set up phpunit as the make program:
 set makeprg=cd\ /home/dmiller/development/Etsyweb/tests/phpunit;\ pake\ $*
@@ -251,15 +267,14 @@ let g:syntastic_aggregate_errors = 1
 
 au! BufRead,BufNewFile *.markdown set filetype=mkd
 au! BufRead,BufNewFile *.md       set filetype=mkd
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-augroup pencil
-    autocmd!
-    autocmd FileType markdown,mkd call pencil#init({'wrap': 'soft'})
-    autocmd FileType text         call pencil#init()
-augroup END
 
 " flow 
 let g:flow#autoclose = 1
+let g:flow#enable = 1
+let g:javascript_plugin_flow = 1
+let g:deoplete#sources#flow#flow_bin = 'flow' 
 
 " elm
 let g:elm_format_autosave = 1
@@ -281,7 +296,7 @@ let g:elm_format_autosave = 1
 let g:NERDSpaceDelims = 1
 
 " Elm
-let g:elm_syntastic_show_warnings = 0
+" let g:elm_syntastic_show_warnings = 0
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
