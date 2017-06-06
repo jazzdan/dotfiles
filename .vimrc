@@ -38,6 +38,7 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
 Plug 'hhvm/vim-hack'
 Plug 'scrooloose/syntastic'
+Plug 'sbdchd/neoformat'
 
 call plug#end()
 
@@ -129,8 +130,12 @@ if getcwd() =~ '/mott-ui\(/\|$\)'
 
     let g:syntastic_javascript_checkers = ["eslint"]
     let g:syntastic_javascript_eslint_exec = "/home/dmiller/development/mott/node_modules/eslint/bin/eslint.js"
-    autocmd FileType javascript set formatprg=prettier\ --single-quote\ --trailing-comma\ es5\ --stdin
-    " autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
+    let g:neoformat_javascript_prettier = {
+            \ 'exe': 'prettier',
+            \ 'args': ['--stdin', '--single-quote', '--parser flow', '--print-width 100'],
+            \ 'stdin': 1,
+            \ }
+    autocmd BufWritePre *.js Neoformat
 endif
 
 if getcwd() =~ '/code-review\(/\|$\)'
@@ -271,6 +276,15 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 
 " flow 
+" Use locally installed flow
+let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
+if matchstr(local_flow, "^\/\\w") == ''
+    let local_flow= getcwd() . "/" . local_flow
+endif
+
+if executable(local_flow)
+  let g:flow#flowpath = local_flow
+endif
 let g:flow#autoclose = 1
 let g:flow#enable = 1
 let g:javascript_plugin_flow = 1
