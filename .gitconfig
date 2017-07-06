@@ -1,5 +1,5 @@
 [core]
-	editor = nvim
+	editor = code
     excludesfile = /home/dmiller/.gitignore
 	autocrlf = false
 [alias]
@@ -7,14 +7,13 @@
     cm = commit -m
     rpull = pull --rebase --stat
     me = log --author="dmiller"
-    abba = "!echo \"#disco 💃 abba 💃 fm dmiller: $(git show | gist -t diff) -- $(git log -1 --pretty='format:%s')\" | nc irccat.etsycorp.com 12345"
     d = difftool
     cp = cherry-pick
 [grep]                                                                                                                           
     linenumber = true        
 [user]
-	  name = Dan Miller
-    email = dmiller@etsy.com
+	name = Dan Miller
+    email = dan@dmiller.io
 [commit]
     template = ~/.gitmessage
 [push]

@@ -16,8 +16,6 @@ Plug 'derekwyatt/vim-scala'
 Plug 'plasticboy/vim-markdown'
 Plug 'buddhavs/vim-Rename' 
 Plug 'joonty/vdebug'
-Plug 'https://github.etsycorp.com/tschneiter/vim-github.git'
-Plug 'https://github.etsycorp.com/Engineering/vim-rodeo.git'
 Plug 'urthbound/hound.vim'
 Plug 'mattn/webapi-vim'
 Plug 'fatih/vim-go'
@@ -70,7 +68,6 @@ set visualbell                     " visual bell instead of annoying beeping
 set mouse=a                        " enable full mouse support in the console
 set virtualedit=onemore            " end of the line? what's that?
 
-set path=~/development/Etsyweb/phplib/EtsyModel,~/development/Etsyweb/phplib,~/development/Etsyweb/templates
 set includeexpr=substitute(v:fname,'_','/','g').'.php'
 set suffixesadd=.tpl
 set suffixesadd=.js
@@ -91,7 +88,6 @@ tnoremap <Esc> <C-\><C-n>
 
 " neomake
 let g:neomake_open_list = 2
-let g:neomake_php_phpcs_args_standard = "/home/".expand($USER)."/development/Etsyweb/tests/standards/stable-ruleset.xml"
 let g:neomake_php_enabled_makers = ["php", "phpcs"]
 let g:neomake_javascript_enabled_makers = []
 autocmd! BufWritePost * Neomake
@@ -116,41 +112,6 @@ let g:syntastic_always_populate_loc_list=1
 let g:syntastic_aggregate_errors=1
 let g:syntastic_sort_aggregated_errors=1
 let g:syntastic_quiet_messages = { "type": "style" }
-
-if getcwd() =~ '/Etsyweb\(/\|$\)'
-    let g:syntastic_javascript_checkers = ["eslint"]
-    let g:syntastic_javascript_eslint_exec = "/usr/lib/node_modules/etsy-eslint/node_modules/.bin/eslint"
-    let g:syntastic_javascript_eslint_args='--config /usr/lib/node_modules/etsy-eslint/config.json'
-endif
-
-if getcwd() =~ '/mott-ui\(/\|$\)'
-    set shiftwidth=2
-    set softtabstop=2
-    set tabstop=2
-
-    let g:syntastic_javascript_checkers = ["eslint"]
-    let g:syntastic_javascript_eslint_exec = "/home/dmiller/development/mott/node_modules/eslint/bin/eslint.js"
-    let g:neoformat_javascript_prettier = {
-            \ 'exe': 'prettier',
-            \ 'args': ['--stdin', '--single-quote', '--parser flow', '--print-width 100'],
-            \ 'stdin': 1,
-            \ }
-    autocmd BufWritePre *.js Neoformat
-endif
-
-if getcwd() =~ '/code-review\(/\|$\)'
-    set shiftwidth=2
-    set softtabstop=2
-    set tabstop=2
-
-    let g:syntastic_javascript_checkers = ["eslint"]
-endif
-
-if getcwd() =~ '/deployinator\(/\|$\)'
-    set shiftwidth=2
-    set softtabstop=2
-    set tabstop=2
-endif
 
 " SuperTab Settings
 let g:SuperTabDefaultCompletionTypeDiscovery = [
@@ -217,36 +178,12 @@ augroup END
 au BufRead,BufNewFile *.md setlocal textwidth=120
 let g:vim_markdown_toc_autofit = 1
 
-" Set up phpunit as the make program:
-set makeprg=cd\ /home/dmiller/development/Etsyweb/tests/phpunit;\ pake\ $*
-
-" Here's where the real magic happens.
-" " Set the error format so that it can detect test failures,
-" " In addition to other PHP interpreter errors (also one line)
-set errorformat=%E%n)\ %.%#,%Z%f:%l,%C%m,%m\ in\ %f\ on\ line\ %l,%-G%.%#
-
-"map muu :make unit_nosetup %:p:h<CR>
-map muu :make unit_nosetup <C-R>#
-map mmu :make unit_nosetup
-map mmU :make unit
-map mmi :make integration_nosetup
-map mmI :make integration
-map mmf :make flaky_nosetup
-map mmf :make flaky
-
-" I don't auto-open the quickfix window, I use a binding or that:
-map cx :cwindow<CR>
-"
 " " I don't let Syntastic auto open its window either:
 map ex :Error<CR>
 
 set smartcase
 
 let g:vim_markdown_folding_disabled=1
-
-let g:hound_base_url="hound.etsycorp.com"
-
-let g:fugitive_github_domains = ['github.etsycorp.com']
 
 let g:vdebug_options= {
     \    "port" : 9089,

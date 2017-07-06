@@ -1,0 +1,10 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "workbench.colorTheme": "Solarized Dark",
+    "editor.fontFamily": "'Source Code Pro'",
+    "vim.leader": ",",
+    "editor.folding": false,
+    "editor.formatOnSave": true,
+    "flow.useNPMPackagedFlow": true,
+    "vim.disableAnnoyingNeovimMessage": true
+}

@@ -4,7 +4,6 @@ alias ll='ls -al'
 alias l='ls -l'
 alias ..='cd ..'
 alias ...='cd ../..'
-alias tl='sudo tail -F /var/log/httpd/php.log /var/log/httpd/info.log /var/log/httpd/error_log /var/log/gearman/php.log'
 alias vi='vim'
 alias gdiff='gist -t diff'
 alias git-root='cd $(git rev-parse --show-cdup)'
@@ -13,8 +12,6 @@ alias g='git'
 alias ta='tmux -u attach'
 alias td='tmux -u attach -d'
 alias vim='nvim'
-alias etsygo='cd ~/development/go/src/github.etsycorp.com/Engineering/EtsyGo'
-alias franz='cd ~/development/go/src/github.etsycorp.com/Engineering/franz'
 alias j='jira'
 alias jme='jira ls -p DISCO -a dmiller'
 alias jsprint='jira ls -q "assignee was dmiller AND updatedDate > -1w" -t table'
@@ -33,7 +30,7 @@ PS1="[\w]> "
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-export EDITOR='nvim'
+export EDITOR='code'
 
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/development/go
