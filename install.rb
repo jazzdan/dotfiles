@@ -34,7 +34,7 @@ Dir.foreach('.') do |item|
     if options[:dryrun] === true
         puts "ln -s #{Dir.pwd + '/' + item} #{path_to_copy_to}"
     else 
-        if !File.directory? path_to_copy_to
+        if File.directory? path_to_copy_to
             FileUtils.mkdir_p(path_to_copy_to)
         end
         FileUtils.ln_s(Dir.pwd + '/' + item, path_to_copy_to, :force => true)
