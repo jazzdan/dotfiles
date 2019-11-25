@@ -1,28 +1,28 @@
 [core]
-	editor = code
-    excludesfile = /home/dmiller/.gitignore
+	editor = code --wait
+    excludesfile = /home/dan/.gitignore
 	autocrlf = false
 [alias]
     amend = commit -v --amend
     cm = commit -m
+    co = checkout
     rpull = pull --rebase --stat
     me = log --author="dmiller"
     d = difftool
     cp = cherry-pick
-[grep]                                                                                                                           
-    linenumber = true        
+    rb = branch --sort=-committerdate
+[grep]
+    linenumber = true
 [user]
 	name = Dan Miller
-    email = dan@dmiller.io
+    email = dmiller@windmill.engineering
 [commit]
-    template = ~/.gitmessage
+    #template = ~/.gitmessage
 [push]
     default = simple
 [status]
     showUntrackedFiles = all
 [diff]
-    tool = icdiff
-[difftool]
-    prompt = false
-[difftool "icdiff"]
-    cmd = /usr/bin/icdiff --no-bold --line-numbers $LOCAL $REMOTE
+    tool = default-difftool
+[difftool "default-difftool"]
+    cmd = code --wait --diff $LOCAL $REMOTE
