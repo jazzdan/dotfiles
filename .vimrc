@@ -1,15 +1,10 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'altercation/vim-colors-solarized'
-
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'junegunn/fzf'
-
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'scrooloose/nerdcommenter'
 
 call plug#end()
 
@@ -17,14 +12,6 @@ syntax on
 set number
 set undofile
 set showcmd
-
-" Launch gopls when Go files are in use
-let g:LanguageClient_serverCommands = {
-       \ 'go': ['gopls']
-       \ }
-" Run gofmt on save
-autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
-
 
 " Formatting stuff
 syntax enable
