@@ -50,8 +50,3 @@ augroup END
 
 " Autocomplete
 let g:deoplete#enable_at_startup = 1
-command Rename call LanguageClient#textDocument_rename()
-command GoToDefiniton call LanguageClient#textDocument_definition()
-" command FindAllReferences 
-command SymbolSearch call LanguageClient#textDocument_documentSymbol()
-nnoremap <F5> :call LanguageClient_contextMenu()<CR><Paste>
